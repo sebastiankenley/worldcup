@@ -430,7 +430,7 @@ const BACKEND_URL = "https://script.google.com/macros/s/AKfycbw-4HuF7y0LiCyEHbRy
 //
 // For the 3rd-place slots, use the EXACT slot string that appears
 // in MATCHES below. Example:
-//   "A/B/C/D/F3": { name:"Canada", code:"CAN", flag:"flags/CAN.png", qualifiedFrom:"B3" },
+//   "T3_ABCDF": { name:"Canada", code:"CAN", flag:"flags/CAN.png", qualifiedFrom:"B3" },
 //
 // Until Sunday, the site falls back to placeholders like A1, B2,
 // Best 3rd (A/B/C/D/F).
@@ -441,47 +441,59 @@ const BACKEND_URL = "https://script.google.com/macros/s/AKfycbw-4HuF7y0LiCyEHbRy
 // - Sheets gets slot, code, name, and label for every pick.
 const TEAM_DB = {
   // Group winners / runners-up
-  A1: null, A2: null,
-  B1: null, B2: null,
-  C1: null, C2: null,
-  D1: null, D2: null,
-  E1: null, E2: null,
-  F1: null, F2: null,
-  G1: null, G2: null,
-  H1: null, H2: null,
-  I1: null, I2: null,
-  J1: null, J2: null,
-  K1: null, K2: null,
-  L1: null, L2: null,
+    A1: { slot: "A1", code: "MEX", name: "Mexico" },
+    A2: { slot: "A2", code: "RSA", name: "South Africa" },
+    B1: { slot: "B1", code: "SUI", name: "Switzerland" },
+    B2: { slot: "B2", code: "CAN", name: "Canada" },
+    C1: { slot: "C1", code: "BRA", name: "Brazil" },
+    C2: { slot: "C2", code: "MAR", name: "Morocco" },
+    D1: { slot: "D1", code: "USA", name: "United States" },
+    D2: { slot: "D2", code: "AUS", name: "Australia" },
+    E1: { slot: "E1", code: "GER", name: "Germany" },
+    E2: { slot: "E2", code: "CIV", name: "Ivory Coast" },
+    F1: { slot: "F1", code: "NED", name: "Netherlands" },
+    F2: { slot: "F2", code: "JPN", name: "Japan" },
+    G1: { slot: "G1", code: "BEL", name: "Belgium" },
+    G2: { slot: "G2", code: "EGY", name: "Egypt" },
+    H1: { slot: "H1", code: "ESP", name: "Spain" },
+    H2: { slot: "H2", code: "CPV", name: "Cape Verde" },
+    I1: { slot: "I1", code: "FRA", name: "France" },
+    I2: { slot: "I2", code: "NOR", name: "Norway" },
+    J1: { slot: "J1", code: "ARG", name: "Argentina" },
+    J2: { slot: "J2", code: "AUT", name: "Austria" },
+    K1: { slot: "K1", code: "COL", name: "Colombia" },
+    K2: { slot: "K2", code: "POR", name: "Portugal" },
+    L1: { slot: "L1", code: "ENG", name: "England" },
+    L2: { slot: "L2", code: "CRO", name: "Croatia" },
 
   // Best 3rd-place slots in the official knockout bracket
-  "A/B/C/D/F3": null,
-  "C/D/F/G/H3": null,
-  "C/E/F/H/I3": null,
-  "E/H/I/J/K3": null,
-  "B/E/F/I/J3": null,
-  "A/E/H/I/J3": null,
-  "E/F/G/I/J3": null,
-  "D/E/I/J/L3": null
-};
+  T3_ABCDF: { slot: "T3_ABCDF", code: "PAR", name: "Paraguay" },
+  T3_CDFGH: { slot: "T3_CDFGH", code: "SWE", name: "Sweden" },
+  T3_CEFHI: { slot: "T3_CEFHI", code: "ECU", name: "Ecuador" },
+  T3_EHIJK: { slot: "T3_EHIJK", code: "COD", name: "Congo DR" },
+  T3_BEFIJ: { slot: "T3_BEFIJ", code: "BIH", name: "Bosnia and Herzegovina" },
+  T3_AEHIJ: { slot: "T3_AEHIJ", code: "SEN", name: "Senegal" },
+  T3_EFGIJ: { slot: "T3_EFGIJ", code: "ALG", name: "Algeria" },
+  T3_DEIJL: { slot: "T3_DEIJL", code: "GHA", name: "Ghana" }
+  };
 
 // Match database: do not edit unless FIFA changes the bracket.
 const MATCHES = [
   {id:"M73",  date:"June 28", stage:"Round of 32", home:"A2", away:"B2"},
-  {id:"M74",  date:"June 29", stage:"Round of 32", home:"E1", away:"A/B/C/D/F3"},
+  {id:"M74",  date:"June 29", stage:"Round of 32", home:"E1", away:"T3_ABCDF"},
   {id:"M75",  date:"June 29", stage:"Round of 32", home:"F1", away:"C2"},
   {id:"M76",  date:"June 29", stage:"Round of 32", home:"C1", away:"F2"},
-  {id:"M77",  date:"June 30", stage:"Round of 32", home:"I1", away:"C/D/F/G/H3"},
+  {id:"M77",  date:"June 30", stage:"Round of 32", home:"I1", away:"T3_CDFGH"},
   {id:"M78",  date:"June 30", stage:"Round of 32", home:"E2", away:"I2"},
-  {id:"M79",  date:"June 30", stage:"Round of 32", home:"A1", away:"C/E/F/H/I3"},
-  {id:"M80",  date:"July 1", stage:"Round of 32", home:"L1", away:"E/H/I/J/K3"},
-  {id:"M81",  date:"July 1", stage:"Round of 32", home:"D1", away:"B/E/F/I/J3"},
-  {id:"M82",  date:"July 1", stage:"Round of 32", home:"G1", away:"A/E/H/I/J3"},
+  {id:"M79",  date:"June 30", stage:"Round of 32", home:"A1", away:"T3_CEFHI"},
+  {id:"M80",  date:"July 1", stage:"Round of 32", home:"L1", away:"T3_EHIJK"},
+  {id:"M81",  date:"July 1", stage:"Round of 32", home:"D1", away:"T3_BEFIJ"},
+  {id:"M82",  date:"July 1", stage:"Round of 32", home:"G1", away:"T3_AEHIJ"},
   {id:"M83",  date:"July 2", stage:"Round of 32", home:"K2", away:"L2"},
   {id:"M84",  date:"July 2", stage:"Round of 32", home:"H1", away:"J2"},
-  {id:"M85",  date:"July 2", stage:"Round of 32", home:"B1", away:"E/F/G/I/J3"},
+  {id:"M85",  date:"July 2", stage:"Round of 32", home:"B1", away:"T3_EFGIJ"},
   {id:"M86",  date:"July 3", stage:"Round of 32", home:"J1", away:"H2"},
-  {id:"M87",  date:"July 3", stage:"Round of 32", home:"K1", away:"D/E/I/J/L3"},
+  {id:"M87",  date:"July 3", stage:"Round of 32", home:"K1", away:"T3_DEIJL"},
   {id:"M88",  date:"July 3", stage:"Round of 32", home:"D2", away:"G2"},
 
   {id:"M89",  date:"July 4", stage:"Round of 16", home:"WM74", away:"WM77"},
