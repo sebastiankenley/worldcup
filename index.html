@@ -558,7 +558,7 @@ function normalizeTeamData(slot, data){
     code:data.code || "",
     name:data.name || "",
     display:data.name || data.code || tokenLabel(slot),
-    flag:data.flag || (data.code ? `flags/${data.code}.png` : ""),
+    flag:data.flag || (data.code ? `flags/${data.code}.svg` : ""),
     qualifiedFrom:data.qualifiedFrom || "",
     source:slot,
     placeholder:false
