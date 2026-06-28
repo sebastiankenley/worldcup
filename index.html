@@ -514,10 +514,10 @@ const MATCHES = [
   {id:"M102", date:"July 15", stage:"Semifinals", home:"WM99", away:"WM100"},
 
   {id:"M104", date:"July 19", stage:"Final", home:"WM101", away:"WM102"},
-  {id:"M103", date:"July 18", stage:"Third Place", home:"LM101", away:"LM102", optional:true}
+  // {id:"M103", date:"July 18", stage:"Third Place", home:"LM101", away:"LM102", optional:true}
 ];
 
-const ROUND_ORDER = ["Round of 32", "Round of 16", "Quarterfinals", "Semifinals", "Final", "Third Place"];
+const ROUND_ORDER = ["Round of 32", "Round of 16", "Quarterfinals", "Semifinals", "Final"]; // "Third Place"];
 const REQUIRED_MATCH_IDS = MATCHES.filter(m => !m.optional).map(m => m.id);
 const matchesById = Object.fromEntries(MATCHES.map(m => [m.id, m]));
 let picks = {}; // { M73: teamKey }
