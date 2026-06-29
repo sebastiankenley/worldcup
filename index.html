@@ -143,6 +143,9 @@
     font-size:16px;
     background:#fff;
   }
+  .form-row.three{
+    grid-template-columns:repeat(3,minmax(220px,1fr));
+}
   input:focus{ outline:3px solid rgba(109,36,55,.18); border-color:var(--cat-burgundy); }
   .bracket-shell{
     margin-top:16px;
@@ -370,19 +373,27 @@
         </div>
       </details>
 
-      <section>
-        <h2 class="section-title">Entry Information</h2>
-        <div class="form-row">
-          <div><label for="scoreboardName">Scoreboard name</label><input id="scoreboardName" placeholder="Name shown on scoreboard" autocomplete="nickname"></div>
-          <div><label for="realName">Real name</label><input id="realName" placeholder="Your real name" autocomplete="name"></div>
-          <div><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" autocomplete="email"></div>
-          <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="(555) 555-5555" autocomplete="tel"></div>
-        </div>
-        <div class="form-row two">
-          <div><label for="goldenBootPick">Golden Boot pick</label><input id="goldenBootPick" placeholder="Tournament top scorer"></div>
-          <div><label for="tiebreakerFinalGoals">Tiebreaker: final total goals</label><input id="tiebreakerFinalGoals" type="number" inputmode="numeric" min="0" step="1" placeholder="Example: 3"></div>
-        </div>
-      </section>
+      <div class="form-row three">
+  <div>
+    <label for="scoreboardName">Scoreboard Name</label>
+    <input id="scoreboardName" placeholder="Name shown on scoreboard">
+  </div>
+
+  <div>
+    <label for="goldenBootPick">Golden Boot Pick</label>
+    <input id="goldenBootPick" placeholder="Tournament top scorer">
+  </div>
+
+  <div>
+    <label for="tiebreakerFinalGoals">Tiebreaker: Final Total Goals</label>
+    <input
+      id="tiebreakerFinalGoals"
+      type="number"
+      min="0"
+      step="1"
+      placeholder="Example: 3">
+  </div>
+</div>
 
       <section>
         <h2 class="section-title">Knockout Bracket</h2>
@@ -738,9 +749,6 @@ function buildPayload(){
     pool_name:"Last One Standing - World Cup 2026",
     submitted_at:new Date().toISOString(),
     scoreboard_name:getVal("scoreboardName"),
-    real_name:getVal("realName"),
-    email:getVal("email"),
-    phone:getVal("phone"),
     golden_boot_pick:getVal("goldenBootPick"),
     tiebreaker_final_goals:getVal("tiebreakerFinalGoals") === "" ? null : Number.parseInt(getVal("tiebreakerFinalGoals"), 10),
     finalist_1:finalist1,
@@ -757,9 +765,6 @@ function buildPayload(){
 }
 function validateEntry(){
   if(!getVal("scoreboardName")) return "Enter your scoreboard name.";
-  if(!getVal("realName")) return "Enter your real name.";
-  if(!getVal("email")) return "Enter your email.";
-  if(!getVal("phone")) return "Enter your phone number.";
   if(!getVal("goldenBootPick")) return "Enter your Golden Boot pick.";
   const tb = getVal("tiebreakerFinalGoals");
   const tbInt = Number.parseInt(tb, 10);
